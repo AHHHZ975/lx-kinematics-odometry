@@ -15,10 +15,11 @@ def delta_phi(ticks: int, prev_ticks: int, resolution: int) -> Tuple[float, floa
     """
 
     # TODO: these are random values, you have to implement your own solution in here
-    ticks = prev_ticks + int(np.random.uniform(0, 10))
-    dphi = np.random.random()
+    delta_ticks = ticks - prev_ticks    
+    alpha = 2*np.pi/resolution
+    delta_phi = delta_ticks * alpha
     # ---
-    return dphi, ticks
+    return delta_phi, ticks
 
 
 def estimate_pose(
@@ -51,8 +52,15 @@ def estimate_pose(
     """
 
     # These are random values, replace with your own
-    x_curr = np.random.random()
-    y_curr = np.random.random()
-    theta_curr = np.random.random()
+
+    linear_displacement_wheel_right = R * delta_phi_right
+    linear_displacement_wheel_left = R * delta_phi_left
+    linear_displacement_robot_origin = (linear_displacement_wheel_left + linear_displacement_wheel_right) / 2
+
+    angular_displacement_robot_origin = (linear_displacement_wheel_right - linear_displacement_wheel_left) / (baseline)
+    theta_curr = theta_prev + angular_displacement_robot_origin
+
+    x_curr = x_prev + (linear_displacement_robot_origin*np.cos(theta_curr))
+    y_curr = y_prev + (linear_displacement_robot_origin*np.sin(theta_curr))
     # ---
     return x_curr, y_curr, theta_curr

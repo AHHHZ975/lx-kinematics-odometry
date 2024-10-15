@@ -80,10 +80,12 @@ class EncoderPoseNode(DTROS):
 
         # Wheel encoder subscriber:
         left_encoder_topic = f"/{self.veh}/left_wheel_encoder_driver_node/tick"
+        # self.log(str(left_encoder_topic))
         rospy.Subscriber(left_encoder_topic, WheelEncoderStamped, self.cbLeftEncoder, queue_size=1)
 
         # Wheel encoder subscriber:
         right_encoder_topic = f"/{self.veh}/right_wheel_encoder_driver_node/tick"
+        # self.log(str(right_encoder_topic))
         rospy.Subscriber(right_encoder_topic, WheelEncoderStamped, self.cbRightEncoder, queue_size=1)
 
         # Odometry publisher
@@ -195,6 +197,11 @@ class EncoderPoseNode(DTROS):
         # synch incoming messages from encoders
         self.LEFT_RECEIVED = self.RIGHT_RECEIVED = False
 
+        # self.log(f"Left received: {self.LEFT_RECEIVED}")
+        # self.log(f"Right received: {self.RIGHT_RECEIVED}")
+
+        time.sleep(0.2)
+
         self.x_curr, self.y_curr, theta_curr = estimate_pose(
             self.R,
             self.baseline,
@@ -209,15 +216,14 @@ class EncoderPoseNode(DTROS):
 
         # self.loging to screen for debugging purposes
         self.log("              ODOMETRY             ")
-        # self.log(f"Baseline : {self.baseline}   R: {self.R}")
+        # self.log(f"Baseline : {self.baseline}   R: {self.R}")        
         self.log(f"Theta : {np.rad2deg(self.theta_curr)} deg,  x: {self.x_curr} m,  y: {self.y_curr} m")
         self.log(
             f"Rotation left wheel : {np.rad2deg(self.delta_phi_left)} deg,   "
             f"Rotation right wheel : {np.rad2deg(self.delta_phi_right)} deg"
         )
         self.log(f"Prev Ticks left : {self.left_tick_prev}   Prev Ticks right : {self.right_tick_prev}")
-        # self.log(
-        #     f"Prev integral error : {self.prev_int}")
+        self.log(f"Prev integral error : {self.prev_int}")
 
         self.duckiebot_is_moving = abs(self.delta_phi_left) > 0 or abs(self.delta_phi_right) > 0
 
