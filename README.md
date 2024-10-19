@@ -4,6 +4,15 @@
 
 # **Learning Experience (LX): Kinematics and Odometry **
 
+# Odometry Results - Using data from motion sensors (in this case, encoder data) to estimate the change in position and/or orientation over time
+
+1- Simulation: Trajectory estimation from RViz after doing one loop in the Duckiematrix simulation environment:
+![Simulator_Odometry_Results](https://github.com/user-attachments/assets/001f0dc4-261b-4b5a-bde1-5608c436d417)
+
+2- Real robot: Trajectory estimation from RViz after doing one loop using the robot in the Lab:
+![Realworld_Odometry_Result1](https://github.com/user-attachments/assets/fa5db2cf-5da5-41f3-b5a8-5c6d134cb4a0)
+![Realworld_odometry_Result2](https://github.com/user-attachments/assets/7401ac74-c397-4b86-b993-ea13827ecb28)
+
 
 # Instructions
 
