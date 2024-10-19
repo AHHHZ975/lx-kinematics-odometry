@@ -7,11 +7,13 @@
 # Odometry Results - Using data from motion sensors (in this case, encoder data) to estimate the change in position and/or orientation over time
 
 1- Simulation: Trajectory estimation from RViz after doing one loop in the Duckiematrix simulation environment:
-![Simulator_Odometry_Results](https://github.com/user-attachments/assets/001f0dc4-261b-4b5a-bde1-5608c436d417)
+![Simulator_Odometry_Results](https://github.com/user-attachments/assets/774f8458-41d7-49f9-bac8-dce211ae2fde)
+
 
 2- Real robot: Trajectory estimation from RViz after doing one loop using the robot in the Lab:
-![Realworld_Odometry_Result1](https://github.com/user-attachments/assets/fa5db2cf-5da5-41f3-b5a8-5c6d134cb4a0)
-![Realworld_odometry_Result2](https://github.com/user-attachments/assets/7401ac74-c397-4b86-b993-ea13827ecb28)
+![Realworld_Odometry_Result1](https://github.com/user-attachments/assets/cdb3081e-0cc8-4c1a-890f-f5462448594c)
+![Realworld_odometry_Result2](https://github.com/user-attachments/assets/58b346b5-5ecb-4078-b54f-22ed6de031b2)
+
 
 
 # Instructions
